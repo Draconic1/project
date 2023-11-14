@@ -1,0 +1,1 @@
+export { getDicsiplines } from './disciplineSelectors';

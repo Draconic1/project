@@ -1,0 +1,1 @@
+export { DisciplineTakingPage } from './ui';

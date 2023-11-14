@@ -1,0 +1,1 @@
+export { DisciplineTabs } from './Tabs';

@@ -1,0 +1,20 @@
+.card {
+  display: flex;
+  height: 200px;
+  padding: 30px 35px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background-color: black;
+}
+.card .bluecard {
+  background-color: black;
+}
+.card .redcard {
+  background-color: black;
+}
+.card .yellowcard {
+  background-color: black;
+}/*# sourceMappingURL=homecards.css.map */

@@ -1,0 +1,282 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:boundaries/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "settings": {
+        "boundaries/elements": [
+            {
+                "type": "app",
+                "pattern": "@app/*"
+            },
+            {
+                "type": "processes",
+                "pattern": "@processes/*"
+            },
+            {
+                "type": "pages",
+                "pattern": "@pages/*"
+            },
+            {
+                "type": "layouts",
+                "pattern": "@layouts/*"
+            },
+            {
+                "type": "widgets",
+                "pattern": "@widgets/*"
+            },
+            {
+                "type": "features",
+                "pattern": "@features/*"
+            },
+            {
+                "type": "entities",
+                "pattern": "@entities/*"
+            },
+            {
+                "type": "api",
+                "pattern": "@api/*"
+            },
+            {
+                "type": "shared",
+                "pattern": "@shared/*"
+            }
+        ],
+        "import/resolver": {
+            "typescript": true,
+            "node": true
+        },
+        "react": {
+            "version": "detect"
+        }
+    },
+    "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "unused-imports", "simple-import-sort"],
+    "rules": {
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "multiline": true,
+                    "minProperties": 2
+                }
+            }
+        ],
+        "no-console": "warn",
+        "react/prop-types": "off",
+        "react/jsx-key": "error",
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/ban-types": [
+            "error",
+            {
+                "types": {
+                    "React.FC": {
+                        "message": "import type { FC } from 'react'",
+                        "fixWith": "FC"
+                    },
+                    "React.FunctionComponent": {
+                        "message": "import type { FC } from 'react'",
+                        "fixWith": "FC"
+                    },
+                    "FunctionComponent": {
+                        "message": "import type { FC } from 'react'",
+                        "fixWith": "FC"
+                    },
+                    "Omit": {
+                        "message": "Prefer use 'OmitStrict'",
+                        "fixWith": "OmitStrict"
+                    }
+                }
+            }
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports"
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "unused-imports/no-unused-imports": "error",
+        "no-unused-vars": "warn",
+        "react/react-in-jsx-scope": "off",
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            }
+        ],
+        "react-hooks/exhaustive-deps": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react/display-name": "off",
+        "react/jsx-max-props-per-line": [
+            "error",
+            {
+                "maximum": {
+                    "single": 1,
+                    "multi": 1
+                }
+            }
+        ],
+        "react/jsx-sort-props": [
+            "error",
+            {
+                "callbacksLast": true,
+                "ignoreCase": true,
+                "noSortAlphabetically": false,
+                "shorthandFirst": true,
+                "multiline": "last"
+            }
+        ],
+        "react/self-closing-comp": [
+            "error",
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
+        "simple-import-sort/exports": "error",
+        "boundaries/element-types": [
+            "error",
+            {
+                "default": "disallow",
+                "rules": [
+                    {
+                        "from": "app",
+                        "allow": [
+                            "app",
+                            "processes",
+                            "pages",
+                            "layouts",
+                            "widgets",
+                            "features",
+                            "entities",
+                            "api",
+                            "shared"
+                        ]
+                    },
+                    {
+                        "from": "processes",
+                        "allow": ["pages", "layouts", "widgets", "features", "entities", "api", "shared"]
+                    },
+                    {
+                        "from": "pages",
+                        "allow": ["layouts", "widgets", "features", "entities", "api", "shared"]
+                    },
+                    {
+                        "from": "layouts",
+                        "allow": ["widgets", "features", "entities", "api", "shared"]
+                    },
+                    {
+                        "from": "widgets",
+                        "allow": ["features", "entities", "api", "shared"]
+                    },
+                    {
+                        "from": "features",
+                        "allow": ["entities", "api", "shared"]
+                    },
+                    {
+                        "from": "entities",
+                        "allow": ["api", "shared"]
+                    },
+                    {
+                        "from": "shared",
+                        "allow": ["shared"]
+                    }
+                ]
+            }
+        ],
+        "import/namespace": "error",
+        "import/no-named-as-default": "error",
+        "import/order": [
+            "error",
+            {
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "newlines-between": "always",
+                "pathGroups": [
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@processes/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@pages/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@layouts/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@widgets/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@features/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@entities/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@api/**"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "after",
+                        "pattern": "@shared/**"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["builtin"],
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "type", "object", "index", "unknown"]
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["generate-api.mjs"],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
+    ]
+}
